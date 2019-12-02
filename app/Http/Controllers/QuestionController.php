@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\QuestionResource;
 use App\Model\Question;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Resources\QuestionResource;
+use App\Http\Requests\QuestionRequest;
 
 class QuestionController extends Controller
 {
@@ -55,7 +56,8 @@ class QuestionController extends Controller
      */
     public function update(Request $request, Question $question)
     {
-        //
+        $question->update($request->all());
+        return response('Updated', Response::HTTP_ACCEPTED);
     }
 
     /**
